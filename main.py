@@ -9,6 +9,7 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
+import MeCab
 import os
 
 app = Flask(__name__)
@@ -19,6 +20,8 @@ YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
 
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
+
+tagger = MeCab.Tagger ("mecabrc")
 
 @app.route("/callback", methods=['POST'])
 def callback():
@@ -42,7 +45,7 @@ def callback():
 def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text))
+        TextSendMessage(text=tagger.parse ("真核生物はユニコンタとバイコンタに大別できる。")))
 
 
 if __name__ == "__main__":
