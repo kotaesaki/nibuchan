@@ -10,7 +10,7 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
 import os
-import sys
+import sys,pprint
 import MeCab
 
 app = Flask(__name__)
@@ -22,6 +22,7 @@ YOUR_CHANNEL_SECRET = os.environ["YOUR_CHANNEL_SECRET"]
 line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
+pprint.pprint(sys.path)
 tagger = MeCab.Tagger ("mecabrc")
 print(tagger.parse("今日はいい天気ですね。"))
 
