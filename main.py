@@ -11,6 +11,7 @@ from linebot.models import (
 )
 import os
 import sys,pprint
+import MeCab
 
 app = Flask(__name__)
 
@@ -22,6 +23,8 @@ line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 pprint.pprint(sys.path)
+tagger = MeCab.Tagger ("mecabrc")
+print(tagger.parse("今日はいい天気ですね。"))
 
 @app.route("/callback", methods=['POST'])
 def callback():
