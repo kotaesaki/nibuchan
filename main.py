@@ -9,8 +9,9 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
-import MeCab
 import os
+import sys
+import MeCab
 
 app = Flask(__name__)
 
