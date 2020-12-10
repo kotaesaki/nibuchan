@@ -23,7 +23,9 @@ line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 pprint.pprint(sys.path)
-tagger = MeCab.Tagger('-u user_term.dic')
+tagger = MeCab.Tagger("-Oyomi")
+print(tagger.parse("コーヒー牛乳とラーメン"))
+
 
 @app.route("/callback", methods=['POST'])
 def callback():
