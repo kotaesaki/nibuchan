@@ -23,8 +23,6 @@ line_bot_api = LineBotApi(YOUR_CHANNEL_ACCESS_TOKEN)
 handler = WebhookHandler(YOUR_CHANNEL_SECRET)
 
 pprint.pprint(sys.path)
-tagger = MeCab.Tagger()
-pprint(tagger.parse("今日はいい天気ですね。"))
 
 @app.route("/callback", methods=['POST'])
 def callback():
